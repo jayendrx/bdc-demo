@@ -1,0 +1,226 @@
+/* General Reset and Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #0d1117; /* Dark background */
+    color: #f0f0f0;
+    line-height: 1.6;
+}
+
+/* Header */
+.header {
+    background-color: #101010;
+    padding: 20px 40px;
+    text-align: center;
+    border-bottom: 3px solid #ff002b;
+}
+
+.anovalogo {
+    position: absolute;
+    height: 3.7rem;
+    left: 1rem;
+    top: 1.5rem;
+}
+
+.rotaractlogo {
+    position: absolute;
+    height: 4rem;
+    right: 1rem;
+    top: 1.5rem;
+}
+
+.header h1 {
+    font-size: 1.8em;
+    margin-bottom: 5px;
+}
+
+.header p {
+    font-size: 1em;
+    color: #a0a0a0;
+}
+
+/* Main Container */
+.dashboard-container {
+    max-width: 1400px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+/* Controls Section (Search & Stats) */
+.controls-section {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 0;
+    margin-bottom: 20px;
+    gap: 15px;
+}
+
+#donor-search {
+    padding: 10px 15px;
+    border: 1px solid #000000;
+    border-radius: 8px;
+    background-color: #30363d;
+    color: #f0f0f0;
+    flex-grow: 1;
+    min-width: 250px;
+}
+
+#refresh-btn {
+    padding: 10px 15px;
+    background-color: #818181; /* Green */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#refresh-btn:hover:not(:disabled) {
+    background-color: #30363d;
+}
+
+#refresh-btn:disabled {
+    background-color: #6b7280;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.stats-summary {
+    display: flex;
+    gap: 30px;
+    font-size: 1.1em;
+    font-weight: 500;
+    background-color: #161b22;
+    padding: 10px 20px;
+    border-radius: 8px;
+}
+
+/* Donor List Sections */
+.donor-list-section {
+    background-color: #161b22;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.donor-list-section h2 {
+    color: #ffffff;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #4a4a68;
+}
+
+/* Tables */
+.donor-table-wrapper {
+    overflow-x: auto; /* Allows horizontal scrolling on small screens */
+}
+
+.donor-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px; /* Ensure table is readable */
+}
+
+.donor-table th, .donor-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #4a4a68;
+}
+
+.donor-table thead th {
+    background-color: #0d1117;
+    color: white;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+.donor-table tbody tr:hover {
+    background-color: #3c3c64;
+}
+
+.donor-table td:last-child {
+    white-space: nowrap; /* Keep buttons together */
+}
+
+/* Action Buttons */
+.action-buttons button {
+    padding: 8px 12px;
+    margin-right: 5px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+/* Pending Review Section */
+.btn-accept {
+    background-color: #3e8e41; /* Green */
+    color: white;
+}
+
+.btn-reject {
+    background-color: #e94560; /* Red */
+    color: white;
+}
+
+.btn-accept:hover, .btn-reject:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+/* Pending Certificate Section */
+.btn-issue-cert {
+    background-color: #17a2b8; /* Blue/Teal */
+    color: white;
+}
+
+.btn-issue-cert:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #161b22;
+    border-top: 1px solid #30363d;
+    margin-top: 2rem;
+    color: #8b949e;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .header {
+        padding: 15px 20px;
+    }
+    
+    .dashboard-container {
+        padding: 0 10px;
+    }
+
+    .controls-section {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .stats-summary {
+        justify-content: space-around;
+        gap: 10px;
+        font-size: 1em;
+    }
+    
+    #donor-search, #refresh-btn {
+        width: 100%;
+    }
+}

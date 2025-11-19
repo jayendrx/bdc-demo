@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Portal - BDC 2025</title>
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <img src="assets/image2vector (2).svg" alt="" class="anovalogo">
+        <h1>BDC 2025 - Admin Portal</h1>
+        <img src="assets/rotaract_logo.png" alt="" class="rotaractlogo">
+    </header>
+
+    <main class="container">
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="users">Users</button>
+            <button class="tab-btn" data-tab="donors">Donors</button>
+            <button class="tab-btn" data-tab="donations">Donations</button>
+            <button class="tab-btn" data-tab="hospitals">Hospitals</button>
+        </div>
+
+        <!-- Users Tab -->
+        <section class="tab-content active" id="users-tab">
+            <div class="section-header">
+                <h2>Manage Users</h2>
+                <button class="add-btn" onclick="openUserModal()">+ Add User</button>
+            </div>
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Account Type</th>
+                            <th>Created</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="users-table-body">
+                        <tr><td colspan="5">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Donors Tab -->
+        <section class="tab-content" id="donors-tab">
+            <div class="section-header">
+                <h2>Manage Donors</h2>
+                <button class="add-btn" onclick="openDonorModal()">+ Add Donor</button>
+            </div>
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Registration Number</th>
+                            <th>Donor Type</th>
+                            <th>Created</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="donors-table-body">
+                        <tr><td colspan="5">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Donations Tab -->
+        <section class="tab-content" id="donations-tab">
+            <div class="section-header">
+                <h2>Manage Donations</h2>
+                <button class="add-btn" onclick="openDonationModal()">+ Add Donation</button>
+            </div>
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Donor</th>
+                            <th>Hospital</th>
+                            <th>Status</th>
+                            <th>Blood Accepted</th>
+                            <th>Blood Rejected</th>
+                            <th>Certificate Issued</th>
+                            <th>Created</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="donations-table-body">
+                        <tr><td colspan="8">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Hospitals Tab -->
+        <section class="tab-content" id="hospitals-tab">
+            <div class="section-header">
+                <h2>Manage Hospitals</h2>
+                <button class="add-btn" onclick="openHospitalModal()">+ Add Hospital</button>
+            </div>
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Current</th>
+                            <th>Target</th>
+                            <th>Waiting</th>
+                            <th>Beds</th>
+                            <th>Locked</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="hospitals-table-body">
+                        <tr><td colspan="8">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <!-- User Modal -->
+    <div id="user-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('user-modal')">&times;</span>
+            <h2 id="user-modal-title">Add User</h2>
+            <form id="user-form">
+                <input type="hidden" id="user-id">
+                <div class="form-group">
+                    <label for="user-name">Name</label>
+                    <input type="text" id="user-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="user-email">Email</label>
+                    <input type="email" id="user-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="user-password">Password</label>
+                    <input type="password" id="user-password">
+                    <small>Leave blank to keep existing password</small>
+                </div>
+                <div class="form-group">
+                    <label for="user-account-type">Account Type</label>
+                    <select id="user-account-type" required>
+                        <option value="admin">Admin</option>
+                        <option value="camp">Camp</option>
+                        <option value="hospital">Hospital</option>
+                        <option value="registration">Registration</option>
+                    </select>
+                </div>
+                <button type="submit" class="submit-btn">Save</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Donor Modal -->
+    <div id="donor-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('donor-modal')">&times;</span>
+            <h2 id="donor-modal-title">Add Donor</h2>
+            <form id="donor-form">
+                <input type="hidden" id="donor-id">
+                <div class="form-group">
+                    <label for="donor-name">Name</label>
+                    <input type="text" id="donor-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="donor-registration">Registration Number</label>
+                    <input type="text" id="donor-registration" required>
+                </div>
+                <div class="form-group">
+                    <label for="donor-type">Donor Type</label>
+                    <select id="donor-type" required>
+                        <option value="student">Student</option>
+                        <option value="faculty">Faculty</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <button type="submit" class="submit-btn">Save</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Donation Modal -->
+    <div id="donation-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('donation-modal')">&times;</span>
+            <h2 id="donation-modal-title">Add Donation</h2>
+            <form id="donation-form">
+                <input type="hidden" id="donation-id">
+                <div class="form-group">
+                    <label for="donation-donor">Donor</label>
+                    <select id="donation-donor" required>
+                        <option value="">Select Donor</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="donation-hospital">Hospital</label>
+                    <select id="donation-hospital" required>
+                        <option value="">Select Hospital</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="donation-accepted"> Blood Accepted
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="donation-rejected"> Blood Rejected
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="donation-certificate"> Certificate Issued
+                    </label>
+                </div>
+                <button type="submit" class="submit-btn">Save</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Hospital Modal -->
+    <div id="hospital-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('hospital-modal')">&times;</span>
+            <h2 id="hospital-modal-title">Add Hospital</h2>
+            <form id="hospital-form">
+                <input type="hidden" id="hospital-id">
+                <div class="form-group">
+                    <label for="hospital-name">Name</label>
+                    <input type="text" id="hospital-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="hospital-phone">Phone</label>
+                    <input type="text" id="hospital-phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="hospital-current">Current</label>
+                    <input type="number" id="hospital-current" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="hospital-target">Target</label>
+                    <input type="number" id="hospital-target" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="hospital-waiting">Waiting</label>
+                    <input type="number" id="hospital-waiting" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="hospital-beds">Beds</label>
+                    <input type="number" id="hospital-beds" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="hospital-user">User (Email)</label>
+                    <select id="hospital-user">
+                        <option value="">Select User</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="hospital-locked"> Locked
+                    </label>
+                </div>
+                <button type="submit" class="submit-btn">Save</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>Made with love by ANOVA <3 </p>
+    </footer>
+    <script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital POC Dashboard</title>
+    <link rel="stylesheet" href="css/hospital.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <img src="assets/image2vector (2).svg" alt="" class="anovalogo">
+        <h1>BDC 2025</h1>
+        <p id="hospital-name">Hospital POC Dashboard</p>
+        <img src="assets/rotaract_logo.png" alt="" class="rotaractlogo">
+    </header>
+
+    <main class="dashboard-container">
+        
+        <section class="controls-section">
+            <input type="text" id="donor-search" placeholder="Search by Name or Reg. No.">
+            <button id="refresh-btn">Refresh List</button>
+            <div id="stats-summary" class="stats-summary">
+                <p>Total Pending: <span id="total-pending">0</span></p>
+                <p>Total Certs Due: <span id="total-certs-due">0</span></p>
+            </div>
+        </section>
+
+        <section class="donor-list-section">
+            <h2>Donors Pending completion</h2>
+            <div class="donor-table-wrapper">
+                <table id="pending-review-table" class="donor-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Reg. No.</th>
+                            <th>Donor Type</th>
+                            <th>Time Registered</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td colspan="5">Loading pending donors...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="donor-list-section">
+            <h2>Donors Pending Certificate</h2>
+            <div class="donor-table-wrapper">
+                <table id="pending-cert-table" class="donor-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Reg. No.</th>
+                            <th>Donor Type</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td colspan="4">Loading certificate-pending donors...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+    </main>
+    <footer>
+        <p>Made with love by ANOVA <3 </p>
+    </footer>
+
+    <script src="js/hospital.js"></script> 
+</body>
+</html>
